@@ -6,14 +6,50 @@ public class Main {
 //        m.test1330();
 //        m.test9498();
 //        m.test2753();
-        m.test14681();
+//        m.test14681();
+//        m.test2884();
+        m.test2525();
+    }
+
+    private void test2525() {
+
+    }
+
+    /**
+     * @5단계ㅖ 알람시계
+     *
+     */
+    private void test2884() {
+        Scanner sc = new Scanner(System.in);
+        int H = sc.nextInt();
+        int M = sc.nextInt();
+
+        if(M >= 45){
+            System.out.println(H + " " + (M - 45));
+        } else {
+            // 현재 분이 45분보다 작을 때
+            int newH = H - 1;
+            int newM = 60 + (M - 45);
+            if(H == 0) {
+                newH = 24 - 1;
+            }
+            System.out.println(newH + " " + newM);
+        }
     }
 
     /**
      * @4단계 사분면 고르기
      */
     private void test14681() {
-        
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+
+        if(x > 0){
+            System.out.print(y > 0 ? "1" : y < 0 ? "4" : "");
+        } else if (x < 0){
+            System.out.print(y > 0 ? "2" : y < 0 ? "3" : "");
+        }
     }
 
     /**
