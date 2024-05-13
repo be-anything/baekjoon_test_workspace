@@ -8,15 +8,65 @@ public class Main {
 //        m.test2753();
 //        m.test14681();
 //        m.test2884();
-        m.test2525();
-    }
-
-    private void test2525() {
-
+//        m.test2525();
+        m.test2480();
     }
 
     /**
-     * @5단계ㅖ 알람시계
+     * @7단계 주사위 세개
+     */
+    private void test2480() {
+        Scanner sc = new Scanner(System.in);
+        int num1 = sc.nextInt();
+        int num2 = sc.nextInt();
+        int num3 = sc.nextInt();
+
+        int result = 0;
+        if(num1 != num2 && num2 != num3 && num1 != num3){
+            int max = Math.max(num1, num2);
+            max = Math.max(num3, max);
+            result = max * 100;
+        } else if(num1 == num2 && num2 == num3) {
+            result = 10000 + num1 * 1000;
+        } else {
+            if(num1 == num2) {
+                result = 1000 + num1 * 100;
+            } else {
+                result = 1000 + num3 * 100;
+            }
+        }
+        System.out.println(result);
+    }
+
+    /**
+     * @6단계 오븐시계
+     *
+     */
+    private void test2525() {
+        Scanner sc = new Scanner(System.in);
+        int nowH = sc.nextInt();
+        int nowM = sc.nextInt();
+        int time = sc.nextInt();
+
+        int newM = time + nowM;
+        if(newM >= 60) {
+            int tmpH = newM / 60;
+            int newH = nowH + tmpH;
+            newM %= 60;
+
+            if(newH >= 24) {
+                System.out.println((newH - 24) + " " + newM);
+            }
+            else {
+                System.out.println(newH + " " + newM);
+            }
+        } else {
+            System.out.println(nowH + " " + newM);
+        }
+    }
+
+    /**
+     * @5단계 알람시계
      *
      */
     private void test2884() {
