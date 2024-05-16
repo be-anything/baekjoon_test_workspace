@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -12,7 +13,23 @@ public class Main {
 //        m.test2562();
 //        m.test10810();
 //        m.test10813();
-        m.test5597();
+//        m.test5597();
+        m.test3052();
+    }
+
+    /**
+     * @8단계 나머지
+     */
+    private void test3052() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int[] tmp = new int[10];
+        int B = 42;
+        for(int i = 0; i < tmp.length; i++){
+            tmp[i] = Integer.parseInt(br.readLine()) % B;
+        }
+        br.close();
+        int[] arr = Arrays.stream(tmp).distinct().toArray();
+        System.out.print(arr.length);
     }
 
     /**
@@ -25,16 +42,23 @@ public class Main {
             arr[i - 1] = Integer.parseInt(br.readLine());
         }
         br.close();
-        int[] result = new int[]{0, 0};
+        StringBuilder sb = new StringBuilder();
         for(int i = 1; i <= 30; i++){
-            for(int j: arr){
-                if(j == i) break;
+            int count = 0;
+            for(int j : arr){
+                if(i != j)
+                    count++;
             }
-            
+            if(count == arr.length)
+                sb.append(i + " ");
         }
-        for(int i : result){
-            System.out.print(i + " ");
+        String[] nums = sb.toString().split(" ");
+        if(Integer.parseInt(nums[0]) > Integer.parseInt(nums[1])) {
+            String tmp = nums[0];
+            nums[0] = nums[1];
+            nums[1] = tmp;
         }
+        System.out.print(nums[0] + "\n" + nums[1]);
     }
 
     /**
