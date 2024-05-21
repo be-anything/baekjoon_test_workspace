@@ -14,7 +14,72 @@ public class Main {
 //        m.test10810();
 //        m.test10813();
 //        m.test5597();
-        m.test3052();
+//        m.test3052();
+        m.test10811();
+//        m.test1546();
+    }
+
+    /**
+     * @10단계 평균
+     */
+    private void test1546() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        double sum = 0.0;
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int[] nums = new int[N];
+        int max = 0;
+        int i = 0;
+        while (st.hasMoreTokens()){
+            nums[i] = Integer.parseInt(st.nextToken());
+            if(i == 0){
+                max = nums[i];
+            } else {
+                if (max < nums[i]) {
+                    max = nums[i];
+                }
+            }
+            i++;
+        }
+        for(int j = 0; j < N; j++){
+            sum += (((double) nums[j] / max) * 100);
+        }
+        System.out.print(sum / N);
+    }
+
+    /**
+     * @9단계 바구니 뒤집기
+     */
+    private void test10811() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String tmp = br.readLine();
+        int N = Integer.parseInt(tmp.split(" ")[0]);
+        int M = Integer.parseInt(tmp.split(" ")[1]);
+        int[] arr = new int[N];
+        for(int i = 0 ; i < N; i++){
+            arr[i] = i + 1;
+        }
+        // 위치 역순으로 바꾸기
+        StringTokenizer st;
+        for(int a = 1; a <= M; a++){
+            st = new StringTokenizer(br.readLine(), " ");
+            int i = Integer.parseInt(st.nextToken()) - 1;
+            int j = Integer.parseInt(st.nextToken()) - 1;
+            if(i != j){
+                for(int b = i; b < j; b++){
+                    int _tmp = arr[j];
+                    arr[j] = arr[b];
+                    arr[b] = _tmp;
+                    i++;
+                    j--;
+                }
+            }
+        }
+        br.close();
+        for(int num: arr){
+            System.out.print(num + " ");
+        }
     }
 
     /**
