@@ -23,8 +23,12 @@ public class Main {
     /**
      * @11단계 그대로 출력하기
      */
-    private void test11718() {
+    private void test11718() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = "";
+        while ((str = br.readLine()) != null && !str.isEmpty()) {
+            System.out.println(str);
+        }
     }
 
     /**
